@@ -14,4 +14,6 @@ The primary objective of this project is to streamline the inventory management 
     <li><strong>Inventory Management:</strong> Tracking stock levels of parts and components, generating internal requests for items needed to fulfill orders, and suggesting item orders when stock is insufficient.</li>
 </ul>
 <h2>UML Class Diagram Model</h2>
-
+<p align="center" justify="center">
+  <img src="images/uml_diagram_project.drawio.png">
+</p>
