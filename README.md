@@ -17,3 +17,109 @@ The primary objective of this project is to streamline the inventory management 
 <p align="center" justify="center">
   <img src="images/uml_diagram_project.drawio.png">
 </p>
+
+<h2>Relational Model</h2>
+
+<h4>Entities and Attributes:</h4>
+<br>
+<ol start="1">
+    <li><strong>Encomenda</strong> (Order)
+        <ul>
+            <li>idEncomenda (Order ID)</li>
+            <li>titulo (Title)</li>
+            <li>descricao (Description)</li>
+            <li>dataRecebida (Date Received)</li>
+            <li>dataDeadline (Deadline Date)</li>
+            <li>idCliente (Customer ID, Foreign Key referencing Cliente)</li>
+            <li>idFuncionario (Employee ID, Foreign Key referencing Funcionario)</li>
+        </ul>
+    </li>
+    <li><strong>Funcionario</strong> (Employee)
+        <ul>
+            <li>idFuncionario (Employee ID)</li>
+            <li>nome (Name)</li>
+            <li>morada (Address)</li>
+            <li>telefone (Phone)</li>
+            <li>NIF (Tax Identification Number)</li>
+            <li>idTipo (Type ID, Foreign Key referencing Tipo)</li>
+        </ul>
+    </li>
+    <li><strong>Trabalhar</strong> (Work)
+        <ul>
+            <li>idEncomenda (Order ID, Foreign Key referencing Encomenda)</li>
+            <li>idFuncionario (Employee ID, Foreign Key referencing Funcionario)</li>
+        </ul>
+    </li>
+    <li><strong>Tipo</strong> (Type)
+        <ul>
+            <li>idTipo (Type ID)</li>
+            <li>especializacao (Specialization)</li>
+        </ul>
+    </li>
+    <li><strong>OrdemDeTrabalho</strong> (Work Order)
+        <ul>
+            <li>ID (Order ID)</li>
+            <li>data (Date)</li>
+            <li>descricao (Description)</li>
+            <li>idEncomenda (Order ID, Foreign Key referencing Encomenda)</li>
+        </ul>
+    </li>
+    <li><strong>PedidoInterno</strong> (Internal Request)
+        <ul>
+            <li>pID (Request ID)</li>
+            <li>data (Date)</li>
+            <li>descricao (Description)</li>
+            <li>ID (Order ID, Foreign Key referencing OrdemDeTrabalho)</li>
+        </ul>
+    </li>
+    <li><strong>Procurar</strong> (Search)
+        <ul>
+            <li>pID (Request ID, Foreign Key referencing PedidoInterno)</li>
+            <li>stockID (Stock ID, Foreign Key referencing Stock)</li>
+            <li>ID (ID)</li>
+            <li>descricao (Description)</li>
+            <li>custoUnidade (Unit Cost)</li>
+            <li>quantidade (Quantity)</li>
+        </ul>
+    </li>
+    <li><strong>Stock</strong>
+        <ul>
+            <li>stockID (Stock ID)</li>
+            <li>quantidadeDisponivel (Available Quantity)</li>
+        </ul>
+    </li>
+    <li><strong>EncomendaArtigo</strong> (Order Item)
+        <ul>
+            <li>eID (Order Item ID)</li>
+            <li>data (Date)</li>
+            <li>descricao (Description)</li>
+            <li>idFornecedor (Supplier ID, Foreign Key referencing Fornecedor)</li>
+        </ul>
+    </li>
+    <li><strong>Sugerir</strong> (Suggest)
+        <ul>
+            <li>eID (Order Item ID, Foreign Key referencing EncomendaArtigo)</li>
+            <li>stockID (Stock ID, Foreign Key referencing Stock)</li>
+            <li>ID (ID)</li>
+            <li>descricao (Description)</li>
+            <li>custoUnidade (Unit Cost)</li>
+            <li>quantidade (Quantity)</li>
+        </ul>
+    </li>
+    <li><strong>Fornecedor</strong> (Supplier)
+        <ul>
+            <li>idFornecedor (Supplier ID)</li>
+            <li>nome (Name)</li>
+            <li>morada (Address)</li>
+            <li>telefone (Phone)</li>
+        </ul>
+    </li>
+</ol>
+<h4>Notes:</h4>
+<br>
+<ul>
+    <li>Foreign Key relationships are indicated by "->".</li>
+    <li>Attribute names are translated to English.</li>
+    <li>The schema is designed to be implemented in a relational database management system (RDBMS) like SQLite.</li>
+    <li>Certain attributes marked with asterisks (*) were originally derived elements but were transformed into normal attributes to allow implementation in SQLite.</li>
+</ul>
